@@ -6,8 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.thicapps.artbook.R
+import com.thicapps.artbook.adapter.ImageRecyclerAdapter
+import javax.inject.Inject
 
-class FragmentImageApi : Fragment() {
+class FragmentImageApi @Inject constructor(
+    val imageRecyclerAdapter: ImageRecyclerAdapter
+) : Fragment() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

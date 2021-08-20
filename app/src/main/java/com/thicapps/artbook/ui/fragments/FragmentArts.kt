@@ -5,11 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.navigation.Navigation
 import com.thicapps.artbook.R
+import com.thicapps.artbook.adapter.ArtRecyclerAdapter
 import com.thicapps.artbook.databinding.FragmentArtsBinding
-import com.thicapps.artbook.ui.FragmentArtsDirections
+import javax.inject.Inject
 
 
-class FragmentArts : Fragment(R.layout.fragment_arts) {
+class FragmentArts @Inject constructor(
+    val artRecyclerAdapter : ArtRecyclerAdapter
+) : Fragment(R.layout.fragment_arts) {
 
     private var fragmentBinding :FragmentArtsBinding? = null
 
