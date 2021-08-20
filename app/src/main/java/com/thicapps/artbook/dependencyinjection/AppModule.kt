@@ -2,8 +2,14 @@ package com.thicapps.artbook.dependencyinjection
 
 import android.content.Context
 import androidx.room.Room
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.thicapps.artbook.Constants
+import com.thicapps.artbook.R
 import com.thicapps.artbook.api.RetrofitApi
+import com.thicapps.artbook.repo.ArtRepository
+import com.thicapps.artbook.repo.ArtRepositoryI
+import com.thicapps.artbook.room.ArtDao
 import com.thicapps.artbook.room.ArtDatabase
 import dagger.Module
 import dagger.Provides
@@ -41,6 +47,18 @@ object AppModule {
             .build()
             .create(RetrofitApi::class.java)
     }
+
+    @Singleton
+    @Provides
+    fun injectNormalRepo(dao:ArtDao,api:RetrofitApi) = ArtRepository(dao,api) as ArtRepositoryI
+
+    @Singleton
+    @Provides
+    fun injectGlide(@ApplicationContext context: Context) = Glide.with(context)
+        .setDefaultRequestOptions(RequestOptions().placeholder(R.drawable.ic_launcher_background)
+            .error(R.drawable.ic_launcher_foreground)
+        )
+
     /*
     @Singleton
     @Provides

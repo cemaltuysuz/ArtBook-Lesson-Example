@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.RequestManager
 import com.thicapps.artbook.R
 import com.thicapps.artbook.databinding.FragmentDetailsBinding
+import com.thicapps.artbook.dependencyinjection.AppModule
 import javax.inject.Inject
 
 class FragmentDetails @Inject constructor(
