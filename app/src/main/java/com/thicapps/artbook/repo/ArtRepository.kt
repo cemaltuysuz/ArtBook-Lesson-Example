@@ -1,8 +1,8 @@
 package com.thicapps.artbook.repo
 
-import ImageResponse
 import androidx.lifecycle.LiveData
 import com.thicapps.artbook.api.RetrofitApi
+import com.thicapps.artbook.model.ImageResponse
 import com.thicapps.artbook.room.Art
 import com.thicapps.artbook.room.ArtDao
 import com.thicapps.artbook.util.Resource

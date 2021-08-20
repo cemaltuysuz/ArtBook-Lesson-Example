@@ -1,10 +1,10 @@
 package com.thicapps.artbook.viewmodel
 
-import ImageResponse
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.thicapps.artbook.model.ImageResponse
 import com.thicapps.artbook.repo.ArtRepositoryI
 import com.thicapps.artbook.room.Art
 import com.thicapps.artbook.util.Resource
