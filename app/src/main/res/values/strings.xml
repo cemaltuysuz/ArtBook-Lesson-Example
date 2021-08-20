@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Artbook</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="art_add">Art add</string>
+    <string name="art_name">Art Name</string>
+    <string name="artist_name">Artist Name</string>
+    <string name="art_release_year">Art Release Year</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="enter_artist_name">Enter Artist Name</string>
+    <string name="enter_art_year">Enter Art Release Year</string>
+    <string name="save">Save</string>
+    <string name="search">Search</string>
+</resources>
