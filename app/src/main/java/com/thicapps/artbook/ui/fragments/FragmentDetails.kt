@@ -7,11 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.RequestManager
 import com.thicapps.artbook.R
 import com.thicapps.artbook.databinding.FragmentDetailsBinding
-import com.thicapps.artbook.ui.FragmentDetailsDirections
+import javax.inject.Inject
 
-class FragmentDetails : Fragment() {
+class FragmentDetails @Inject constructor(
+    val glide:RequestManager
+) : Fragment() {
 
     private var fragmentBinding : FragmentDetailsBinding? = null
 
