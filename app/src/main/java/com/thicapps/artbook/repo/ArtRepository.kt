@@ -6,6 +6,9 @@ import com.thicapps.artbook.model.ImageResponse
 import com.thicapps.artbook.room.Art
 import com.thicapps.artbook.room.ArtDao
 import com.thicapps.artbook.util.Resource
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.lang.Exception
 import javax.inject.Inject
 
@@ -27,9 +30,10 @@ class ArtRepository
 
     override suspend fun searchImage(imageString: String): Resource<ImageResponse> {
         return try {
-            val response = retrofitApi.imageSearch(imageString)
-            if (response.isSuccessful){
-                response.body()?.let {
+            val responseOut : Response<ImageResponse> = retrofitApi.imageSearch(imageString)
+
+            if (responseOut.isSuccessful){
+                responseOut.body()?.let {
                     return@let Resource.success(it)
                 } ?: Resource.error("Error",null)
             }else{

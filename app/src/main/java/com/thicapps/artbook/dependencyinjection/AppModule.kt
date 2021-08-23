@@ -1,6 +1,7 @@
 package com.thicapps.artbook.dependencyinjection
 
 import android.content.Context
+import android.util.Log
 import androidx.room.Room
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -44,6 +45,7 @@ object AppModule {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(Constants.Api.BASE_URL)
+            .client(okHttp())
             .build()
             .create(RetrofitApi::class.java)
     }
@@ -59,9 +61,7 @@ object AppModule {
             .error(R.drawable.ic_launcher_foreground)
         )
 
-    /*
-    @Singleton
-    @Provides
+
     private fun okHttp(): OkHttpClient =
         OkHttpClient.Builder()
             .apply {
@@ -72,5 +72,5 @@ object AppModule {
             .connectTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(10, TimeUnit.SECONDS)
             .readTimeout(10, TimeUnit.SECONDS)
-            .build() */
+            .build()
 }

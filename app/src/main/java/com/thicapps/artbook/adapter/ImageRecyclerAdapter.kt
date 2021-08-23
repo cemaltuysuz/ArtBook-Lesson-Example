@@ -16,6 +16,8 @@ class ImageRecyclerAdapter @Inject constructor(
    val glide:RequestManager
 ) : RecyclerView.Adapter<ImageRecyclerAdapter.ImageHolder>() {
 
+    private var onItemClickListener :((String) -> Unit)? = null
+
     private val diffUtil = object : DiffUtil.ItemCallback<String>(){
         override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
             return oldItem == newItem
@@ -28,7 +30,7 @@ class ImageRecyclerAdapter @Inject constructor(
     }
 
     private val recyclerListDiffer = AsyncListDiffer(this,diffUtil)
-    var arts : List<String>
+    var images : List<String>
         get() = recyclerListDiffer.currentList
         set(value) = recyclerListDiffer.submitList(value)
 
@@ -39,13 +41,23 @@ class ImageRecyclerAdapter @Inject constructor(
         return ImageHolder(view)
     }
 
+    fun setOnClickListener(listener : (String) -> Unit){
+        onItemClickListener = listener
+    }
+
     override fun onBindViewHolder(holder: ImageHolder, position: Int) {
         val imageView = holder.itemView.findViewById<AppCompatImageView>(R.id.images_row_image)
-        val currentPos = arts[position]
+        val currentPos = images[position]
         glide.load(currentPos).into(imageView)
+
+        holder.itemView.setOnClickListener {
+            onItemClickListener?.let {
+                it(currentPos)
+            }
+        }
     }
 
     override fun getItemCount(): Int {
-        return arts.size
+        return images.size
     }
 }
