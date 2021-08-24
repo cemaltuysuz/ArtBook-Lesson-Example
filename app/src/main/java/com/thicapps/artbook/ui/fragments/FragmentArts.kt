@@ -57,7 +57,6 @@ class FragmentArts @Inject constructor(
             val action = FragmentArtsDirections.actionFragmentArtsToFragmentDetails()
             Navigation.findNavController(it).navigate(action)
         }
-
     }
 
     private fun subscribeToObservers(){

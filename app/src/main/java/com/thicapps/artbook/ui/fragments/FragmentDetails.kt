@@ -46,8 +46,8 @@ class FragmentDetails @Inject constructor(
         requireActivity().onBackPressedDispatcher.addCallback(callback)
 
         binding.detailsArtSave.setOnClickListener{
-            viewModel.makeArt(binding.detailsArtName.toString(),binding.detailsArtistName.toString()
-                     ,binding.detailsArtYear.toString())
+            viewModel.makeArt(binding.detailsArtName.text.toString(),binding.detailsArtistName.text.toString()
+                     ,binding.detailsArtYear.text.toString())
         }
     }
 
@@ -64,9 +64,10 @@ class FragmentDetails @Inject constructor(
             when(it.status){
                 Status.SUCCESS -> {
                     Toast.makeText(requireContext(),"Success !", Toast.LENGTH_SHORT).show()
+                    findNavController().popBackStack()
                 }
                 Status.ERROR -> {
-                    Toast.makeText(requireContext(),"Error !", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),"Error ! ${it.message}", Toast.LENGTH_SHORT).show()
                 }
                 Status.LOADING -> {
                 }

@@ -61,7 +61,7 @@ class ArtViewModel @Inject constructor(private val repositoryI: ArtRepositoryI) 
         val yearInt = try {
             year.toInt()
         }catch (e:Exception){
-            insertArtMsg.value = Resource.error("Year field must be of numeric type.", null)
+            insertArtMsg.value = Resource.error("Year field must be of numeric type. ${e.message}", null)
             return
         }
 
